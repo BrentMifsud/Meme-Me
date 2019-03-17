@@ -40,11 +40,18 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         initTextField(textField: topTextField, text: "TOP")
         initTextField(textField: bottomTextField, text: "BOTTOM")
         actionButton.isEnabled = false
-        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)        
+        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        subscribeToKeyboardNotifications()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        unsubscribeFromKeyboardNotifications()
     }
     
     //MARK:- IBActions
     @IBAction func actionButtonPressed(_ sender: Any) {
+        
     }
     
     @IBAction func cancelButtonPressed(_ sender: Any) {
@@ -81,13 +88,39 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         dismiss(animated: true, completion: nil)
     }
     
+    func subscribeToKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    func unsubscribeFromKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        if bottomTextField.isEditing {
+            view.frame.origin.y = 0 - getKeyboardHeight(notification)
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        if bottomTextField.isEditing {
+            view.frame.origin.y = 0
+        }
+    }
     
     //MARK:- Helper Methods
-    func initTextField(textField: UITextField, text: String){
+    private func initTextField(textField: UITextField, text: String){
         textField.delegate = textFieldDelegate
         textField.defaultTextAttributes = textAttributes
         textField.text = text
         textField.textAlignment = .center
+    }
+    
+    private func getKeyboardHeight(_ notification: Notification) -> CGFloat {
+        let keyboardSize = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+        return keyboardSize.cgRectValue.height
     }
 
 
