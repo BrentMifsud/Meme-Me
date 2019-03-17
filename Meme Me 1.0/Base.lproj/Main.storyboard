@@ -40,13 +40,13 @@
                                 </items>
                                 <color key="barTintColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                             </toolbar>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="dvA-if-MLh" userLabel="TopText">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="dvA-if-MLh" userLabel="TopTextField">
                                 <rect key="frame" x="0.0" y="84" width="375" height="49"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="40"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="VGx-ez-ovu" userLabel="BottomText">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="VGx-ez-ovu" userLabel="BottomTextField">
                                 <rect key="frame" x="0.0" y="554" width="375" height="49"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="40"/>
@@ -75,6 +75,17 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="action" id="N7J-GY-QcI"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="i5n-ou-qg6"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="actionButton" destination="N7J-GY-QcI" id="orf-nb-OhI"/>
+                        <outlet property="bottomTextField" destination="VGx-ez-ovu" id="rhh-Hw-rJZ"/>
+                        <outlet property="cameraButton" destination="PQP-Dh-rIW" id="f5c-vi-GIa"/>
+                        <outlet property="cancelButton" destination="i5n-ou-qg6" id="91C-5c-mzr"/>
+                        <outlet property="galleryButton" destination="L1P-eY-FiV" id="5xG-2a-ZA2"/>
+                        <outlet property="imageView" destination="3C2-Yz-eMM" id="Tf5-f8-dZB"/>
+                        <outlet property="navigationBar" destination="0G9-f7-k3Y" id="pzO-ug-a5N"/>
+                        <outlet property="toolbar" destination="jo5-cl-ard" id="akD-de-LXc"/>
+                        <outlet property="topTextField" destination="dvA-if-MLh" id="eh5-hz-0Ua"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
