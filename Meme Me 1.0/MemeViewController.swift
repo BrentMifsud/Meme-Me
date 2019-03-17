@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MemeViewController: UIViewController {
 
     //MARK:- IBOutlets
     @IBOutlet weak var navigationBar: UINavigationItem!
