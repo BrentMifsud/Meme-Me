@@ -17,7 +17,31 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3C2-Yz-eMM">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jo5-cl-ard">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Mh0-Sr-So7"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem title="Item" id="PQP-Dh-rIW"/>
+                                </items>
+                                <color key="barTintColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                            </toolbar>
+                        </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="jo5-cl-ard" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="7eI-OU-IIH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3C2-Yz-eMM" secondAttribute="bottom" id="AYI-Mc-i0h"/>
+                            <constraint firstItem="jo5-cl-ard" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Ack-fo-rvB"/>
+                            <constraint firstItem="3C2-Yz-eMM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="NJ8-K5-AK6"/>
+                            <constraint firstItem="3C2-Yz-eMM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="PH6-B4-GLN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3C2-Yz-eMM" secondAttribute="trailing" id="u3u-fl-G4g"/>
+                            <constraint firstAttribute="trailing" secondItem="jo5-cl-ard" secondAttribute="trailing" id="xIV-A9-esw"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="0G9-f7-k3Y"/>
