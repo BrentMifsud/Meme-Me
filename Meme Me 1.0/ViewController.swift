@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    //MARK:- Outlets
+    //MARK:- IBOutlets
     @IBOutlet weak var navigationBar: UINavigationItem!
     @IBOutlet weak var actionButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
@@ -30,17 +30,35 @@ class ViewController: UIViewController {
         NSAttributedString.Key.strokeWidth: -5
     ]
     
+    //MARK:- View Controller Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         initTextField(textField: topTextField, text: "TOP")
         initTextField(textField: bottomTextField, text: "BOTTOM")
+        actionButton.isEnabled = false
+        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
     }
     
+    //MARK:- IBActions
+    @IBAction func actionButtonPressed(_ sender: Any) {
+    }
+    
+    @IBAction func cancelButtonPressed(_ sender: Any) {
+    }
+    
+    @IBAction func cameraButtonPressed(_ sender: Any) {
+    }
+    
+    @IBAction func galleryButtonPressed(_ sender: Any) {
+    }
+    
+    
+    
+    //MARK:- Helper Methods
     func initTextField(textField: UITextField, text: String){
         textField.delegate = textFieldDelegate
         textField.defaultTextAttributes = textAttributes
