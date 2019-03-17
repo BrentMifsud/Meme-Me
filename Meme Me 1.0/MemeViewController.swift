@@ -33,13 +33,13 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     //MARK:- View Controller Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        initTextField(textField: topTextField, text: "TOP")
+        initTextField(textField: bottomTextField, text: "BOTTOM")
+        actionButton.isEnabled = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        initTextField(textField: topTextField, text: "TOP")
-        initTextField(textField: bottomTextField, text: "BOTTOM")
-        actionButton.isEnabled = false
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         subscribeToKeyboardNotifications()
     }
@@ -51,7 +51,20 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     //MARK:- IBActions
     @IBAction func actionButtonPressed(_ sender: Any) {
+        let meme: Meme = saveMeme()
         
+        let activityViewController = UIActivityViewController(activityItems: [meme.memedImage], applicationActivities: nil)
+        
+        activityViewController.completionWithItemsHandler = {(type, ok, items, error) in
+            if ok {
+                print("\(String(describing: items))")
+            } else {
+                let alert = UIAlertController(title: "Sharing Error", message: "Error: \(String(describing: error))", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+            self.present(activityViewController, animated: true, completion: nil)
+        }
     }
     
     @IBAction func cancelButtonPressed(_ sender: Any) {
@@ -75,7 +88,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         present(imagePicker, animated: true, completion: nil)
     }
     
-    //MARK:- UI Methods
+    //MARK:- Image Methods
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             imageView.image = image
@@ -88,6 +101,28 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         dismiss(animated: true, completion: nil)
     }
     
+    private func saveMeme() -> Meme {
+        return Meme(topText: topTextField.text ?? "", bottomText: bottomTextField.text ?? "", originalImage: imageView.image!, memedImage: generateMemedImage())
+    }
+    
+    private func generateMemedImage() -> UIImage{
+        // Hide toolbar and navbar
+        setToolbarVisibility(true)
+        
+        // Render view to an image
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        // Show toolbar and navbar
+        setToolbarVisibility(false)
+        
+        return memedImage
+    }
+    
+    
+    //MARK:- Keyboard Event Handlers
     func subscribeToKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -121,6 +156,11 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     private func getKeyboardHeight(_ notification: Notification) -> CGFloat {
         let keyboardSize = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue // of CGRect
         return keyboardSize.cgRectValue.height
+    }
+    
+    private func setToolbarVisibility(_ isHidden: Bool){
+        self.navigationController?.isNavigationBarHidden = isHidden
+        self.toolbar.isHidden = isHidden
     }
 
 
