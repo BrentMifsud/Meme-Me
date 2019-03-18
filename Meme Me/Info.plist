@@ -49,5 +49,11 @@
 	<array>
 		<string>Impact</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>Used to take photos for meme creation</string>
+	<key>NSContactsUsageDescription</key>
+	<string>Used to share memes with contacts</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Used to pick photos from gallery for meme creation</string>
 </dict>
 </plist>
