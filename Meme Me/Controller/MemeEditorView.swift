@@ -68,26 +68,35 @@ class MemeEditorView: UIViewController,	UIImagePickerControllerDelegate,	UINavig
 		bottomTextField.text = "BOTTOM"
 	}
 
-	@IBAction func cameraButtonPressed(_ sender: Any) {
+	@IBAction func chooseImage(_ sender: UIBarButtonItem) {
 		let imagePicker = UIImagePickerController()
 		imagePicker.delegate = self
-		imagePicker.sourceType = .camera
-		present(imagePicker, animated: true, completion: nil)
-	}
 
-	@IBAction func galleryButtonPressed(_ sender: Any) {
-		let imagePicker = UIImagePickerController()
-		imagePicker.delegate = self
-		imagePicker.sourceType = .photoLibrary
+		switch (sender.tag) {
+		case 0:
+			imagePicker.sourceType = .camera
+		default:
+			imagePicker.sourceType = .photoLibrary
+		}
+
+		imagePicker.allowsEditing = true
 		present(imagePicker, animated: true, completion: nil)
 	}
 
 	//MARK:- Image Methods
 	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-		if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-			imageView.image = image
-			actionButton.isEnabled = true
+		var image: UIImage!
+
+		//Handle is image was cropped or not
+		if let img = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+			image = img
+		} else if let img = info[UIImagePickerController.InfoKey.originalImage] as? UIImage	{
+			image = img
 		}
+
+		imageView.image = image
+		actionButton.isEnabled = true
+
 		dismiss(animated: true, completion: nil)
 	}
 
@@ -97,6 +106,7 @@ class MemeEditorView: UIViewController,	UIImagePickerControllerDelegate,	UINavig
 
 	private func saveMeme() {
 		let meme = Meme(topText: topTextField.text ?? "", bottomText: bottomTextField.text ?? "", originalImage: imageView.image!, memedImage: generateMemedImage())
+		print("Meme Saved: \(meme)")
 	}
 
 	private func generateMemedImage() -> UIImage{
