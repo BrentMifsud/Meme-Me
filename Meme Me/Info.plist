@@ -55,5 +55,7 @@
 	<string>Used to share memes with contacts</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Used to pick photos from gallery for meme creation</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>User can save memes to the photo library</string>
 </dict>
 </plist>
