@@ -9,6 +9,7 @@
 import UIKit
 
 class MemeEditorView: UIViewController,	UIImagePickerControllerDelegate,	UINavigationControllerDelegate {
+
 	//MARK:- IBOutlets
 	@IBOutlet weak var navigationBar: UINavigationItem!
 	@IBOutlet weak var actionButton: UIBarButtonItem!
@@ -29,6 +30,7 @@ class MemeEditorView: UIViewController,	UIImagePickerControllerDelegate,	UINavig
 		NSAttributedString.Key.strokeWidth: -5
 	]
 
+
 	//MARK:- View Controller Methods
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -48,6 +50,7 @@ class MemeEditorView: UIViewController,	UIImagePickerControllerDelegate,	UINavig
 		super.viewWillDisappear(animated)
 		unsubscribeFromKeyboardNotifications()
 	}
+
 
 	//MARK:- IBActions
 	@IBAction func actionButtonPressed(_ sender: Any) {
@@ -83,7 +86,8 @@ class MemeEditorView: UIViewController,	UIImagePickerControllerDelegate,	UINavig
 		present(imagePicker, animated: true, completion: nil)
 	}
 
-	//MARK:- Image Methods
+
+	//MARK:- UIImageView Methods
 	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 		var image: UIImage!
 
@@ -102,27 +106,6 @@ class MemeEditorView: UIViewController,	UIImagePickerControllerDelegate,	UINavig
 
 	func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
 		dismiss(animated: true, completion: nil)
-	}
-
-	private func saveMeme() {
-		let meme = Meme(topText: topTextField.text ?? "", bottomText: bottomTextField.text ?? "", originalImage: imageView.image!, memedImage: generateMemedImage())
-		print("Meme Saved: \(meme)")
-	}
-
-	private func generateMemedImage() -> UIImage{
-		// Hide toolbar and navbar
-		setToolbarVisibility(isHidden: true)
-
-		// Render view to an image
-		UIGraphicsBeginImageContext(self.view.frame.size)
-		view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
-		let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-		UIGraphicsEndImageContext()
-
-		// Show toolbar and navbar
-		setToolbarVisibility(isHidden: false)
-
-		return memedImage
 	}
 }
 
