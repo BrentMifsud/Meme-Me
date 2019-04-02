@@ -69,6 +69,7 @@ class MemeEditorView: UIViewController,	UIImagePickerControllerDelegate,	UINavig
 		imageView.image = nil
 		topTextField.text = "TOP"
 		bottomTextField.text = "BOTTOM"
+		navigationController!.popViewController(animated: true)
 	}
 
 	@IBAction func chooseImage(_ sender: UIBarButtonItem) {
