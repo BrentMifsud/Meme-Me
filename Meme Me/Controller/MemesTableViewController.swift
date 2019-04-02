@@ -15,19 +15,25 @@ class MemeTableViewController: UITableViewController {
 		return appDelegate.memes
 	}
 
-	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-		let cell = tableView.dequeueReusableCell(withIdentifier: "memeCell")
-		cell?.imageView!.image = memes[indexPath.row].memedImage
-		cell?.textLabel!.text = memes[indexPath.row].topText + " " + memes[indexPath.row].bottomText
-
-		return cell!
-	}
-
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
 		let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
 		return appDelegate.memes.count
 	}
+
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+		let cell = tableView.dequeueReusableCell(withIdentifier: "memeTableCell")
+		cell?.imageView!.image = memes[indexPath.row].memedImage
+		cell?.textLabel!.text = memes[indexPath.row].topText + " " + memes[indexPath.row].bottomText
+
+		return cell!
+	}
+
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		print("\(indexPath.row)")
+	}
+
+
 }
