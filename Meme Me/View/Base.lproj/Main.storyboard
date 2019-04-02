@@ -15,7 +15,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Meme Editor View-->
+        <!--Meme Editor-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MemeEditorView" customModule="Meme_Me" customModuleProvider="target" sceneMemberID="viewController">
@@ -46,7 +46,6 @@
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="d5o-NF-MM4"/>
                                 </items>
-                                <color key="barTintColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                             </toolbar>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dvA-if-MLh" userLabel="TopTextField">
                                 <rect key="frame" x="0.0" y="108" width="414" height="49"/>
@@ -61,7 +60,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="jo5-cl-ard" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="7eI-OU-IIH"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VGx-ez-ovu" secondAttribute="trailing" id="7rM-BZ-1JH"/>
@@ -81,7 +80,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="0G9-f7-k3Y">
+                    <navigationItem key="navigationItem" title="Meme Editor" id="0G9-f7-k3Y">
                         <barButtonItem key="leftBarButtonItem" systemItem="action" id="N7J-GY-QcI">
                             <connections>
                                 <action selector="actionButtonPressed:" destination="BYZ-38-t0r" id="jfA-cz-1Ot"/>
@@ -107,7 +106,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1509" y="-1359"/>
+            <point key="canvasLocation" x="1145" y="-1348"/>
         </scene>
         <!--Meme Table View-->
         <scene sceneID="0Zu-bY-3et">
@@ -116,7 +115,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="io0-PQ-kMy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="memeCell" id="MtQ-A0-vyW">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
@@ -124,9 +123,9 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MtQ-A0-vyW" id="qsl-WD-CsC">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -134,7 +133,7 @@
                             <outlet property="delegate" destination="CyY-NB-AJu" id="Cfa-iP-Vz9"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="gyD-X2-Tco">
+                    <navigationItem key="navigationItem" title="Meme Table" id="gyD-X2-Tco">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="gAB-uE-T26">
                             <connections>
                                 <segue destination="BYZ-38-t0r" kind="show" id="9J9-Xe-fKv"/>
@@ -164,10 +163,10 @@
             </objects>
             <point key="canvasLocation" x="-1781" y="-1299"/>
         </scene>
-        <!--Grid-->
+        <!--Meme Grid Navigation Controller-->
         <scene sceneID="Etd-oy-HeU">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dB9-bf-0oN" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dB9-bf-0oN" userLabel="Meme Grid Navigation Controller" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Grid" id="G6S-wH-jbW" userLabel="Grid"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="W6X-F0-PbX">
@@ -181,10 +180,10 @@
             </objects>
             <point key="canvasLocation" x="-752" y="-1621"/>
         </scene>
-        <!--Table-->
+        <!--Meme Table Navigation Controller-->
         <scene sceneID="40S-Rt-VpI">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="byW-8u-rFc" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="byW-8u-rFc" userLabel="Meme Table Navigation Controller" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Table" id="6gu-Fu-FV4" userLabel="Table"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="ehp-KS-l7D">
