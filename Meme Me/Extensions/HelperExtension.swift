@@ -23,7 +23,10 @@ extension MemeEditorView {
 
 	func saveMeme() {
 		let meme = Meme(topText: topTextField.text ?? "", bottomText: bottomTextField.text ?? "", originalImage: imageView.image!, memedImage: generateMemedImage())
-		print("Meme Saved: \(meme)")
+
+		let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
+		appDelegate.memes.append(meme)
 	}
 
 	func generateMemedImage() -> UIImage{
