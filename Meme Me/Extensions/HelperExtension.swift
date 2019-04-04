@@ -14,11 +14,7 @@ extension MemeEditorView {
 		textField.defaultTextAttributes = textAttributes
 		textField.text = text
 		textField.textAlignment = .center
-	}
-
-	func setToolbarVisibility(isHidden: Bool){
-		self.navigationController?.isNavigationBarHidden = isHidden
-		self.toolbar.isHidden = isHidden
+		textField.isHidden = true
 	}
 
 	func saveMeme() {
@@ -36,8 +32,16 @@ extension MemeEditorView {
 		// As of iOS 10, UIGraphicsImageRenderer is the new way to make images.
 		// This creates an image cropping out the extra area from the UIImageView
 		return UIGraphicsImageRenderer(bounds: drawArea).image { (context) in
-			self.imageView.layer.render(in: context.cgContext)
+			memeContentView.drawHierarchy(in: drawArea, afterScreenUpdates: true)
 		}
+	}
+
+	//Sets the Height and Width Constraints of the top and bottom text
+	func setMemeContentViewConstraints() {
+		memeContentViewTopConstraint.constant = getImageOrigin().y
+		memeContentViewBottomConstraint.constant = getImageOrigin().y
+		memeContentViewLeftConstraint.constant = getImageOrigin().x
+		memeContentViewRightConstraint.constant = getImageOrigin().x
 	}
 
 	//Return the CGSize of the image within the imageView

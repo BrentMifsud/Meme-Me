@@ -20,6 +20,11 @@ class MemeEditorView: UIViewController,	UIImagePickerControllerDelegate,	UINavig
 	@IBOutlet weak var topTextField: UITextField!
 	@IBOutlet weak var bottomTextField: UITextField!
 	@IBOutlet weak var imageView: UIImageView!
+	@IBOutlet weak var memeContentView: UIView!
+	@IBOutlet weak var memeContentViewTopConstraint: NSLayoutConstraint!
+	@IBOutlet weak var memeContentViewBottomConstraint: NSLayoutConstraint!
+	@IBOutlet weak var memeContentViewLeftConstraint: NSLayoutConstraint!
+	@IBOutlet weak var memeContentViewRightConstraint: NSLayoutConstraint!
 
 	let textFieldDelegate = TextFieldDelegate()
 
@@ -41,16 +46,19 @@ class MemeEditorView: UIViewController,	UIImagePickerControllerDelegate,	UINavig
 
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		cameraButton.isEnabled = UIImagePickerController
-			.isSourceTypeAvailable(.camera)
+		cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
 		subscribeToKeyboardNotifications()
+	}
+
+	override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+		super.viewWillTransition(to: size, with: coordinator)
+		setMemeContentViewConstraints()
 	}
 
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
 		unsubscribeFromKeyboardNotifications()
 	}
-
 
 	//MARK:- IBActions
 	@IBAction func actionButtonPressed(_ sender: Any) {
@@ -101,6 +109,9 @@ class MemeEditorView: UIViewController,	UIImagePickerControllerDelegate,	UINavig
 
 		imageView.image = image
 		actionButton.isEnabled = true
+		setMemeContentViewConstraints()
+		topTextField.isHidden = false
+		bottomTextField.isHidden = false
 
 		dismiss(animated: true, completion: nil)
 	}
