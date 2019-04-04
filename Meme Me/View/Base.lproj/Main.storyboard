@@ -167,7 +167,7 @@
         <scene sceneID="Etd-oy-HeU">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dB9-bf-0oN" userLabel="Meme Grid Navigation Controller" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Grid" id="G6S-wH-jbW" userLabel="Grid"/>
+                    <tabBarItem key="tabBarItem" title="Grid" image="collection_30x30" selectedImage="collection_30x30" id="G6S-wH-jbW" userLabel="Grid"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="W6X-F0-PbX">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -270,7 +270,7 @@
         <scene sceneID="40S-Rt-VpI">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="byW-8u-rFc" userLabel="Meme Table Navigation Controller" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Table" id="6gu-Fu-FV4" userLabel="Table"/>
+                    <tabBarItem key="tabBarItem" title="Table" image="table_30x30" selectedImage="table_30x30" id="6gu-Fu-FV4" userLabel="Table"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="ehp-KS-l7D">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -286,6 +286,10 @@
             <point key="canvasLocation" x="-752.17391304347836" y="-933.48214285714278"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="collection_30x30" width="30" height="30"/>
+        <image name="table_30x30" width="30" height="30"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="9J9-Xe-fKv"/>
     </inferredMetricsTieBreakers>
