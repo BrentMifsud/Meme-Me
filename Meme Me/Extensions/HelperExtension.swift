@@ -30,18 +30,39 @@ extension MemeEditorView {
 	}
 
 	func generateMemedImage() -> UIImage{
-		// Hide toolbar and navbar
-		setToolbarVisibility(isHidden: true)
+		// Create a CGRect equal to the size of the image on screen
+		let drawArea = CGRect(origin: getImageOrigin(), size: getImageSize())
 
-		// Render view to an image
-		UIGraphicsBeginImageContext(self.view.frame.size)
-		view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
-		let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-		UIGraphicsEndImageContext()
+		// As of iOS 10, UIGraphicsImageRenderer is the new way to make images.
+		// This creates an image cropping out the extra area from the UIImageView
+		return UIGraphicsImageRenderer(bounds: drawArea).image { (context) in
+			self.imageView.layer.render(in: context.cgContext)
+		}
+	}
 
-		// Show toolbar and navbar
-		setToolbarVisibility(isHidden: false)
+	//Return the CGSize of the image within the imageView
+	func getImageSize() -> CGSize {
+		let imageViewSize = imageView.bounds.size
+		let imageSize = imageView.image!.size
+		var minFactor = imageViewSize.width / imageSize.width
 
-		return memedImage
+		if imageViewSize.height / imageSize.height < minFactor {
+			minFactor = imageViewSize.height / imageSize.height
+		}
+
+		return CGSize(width: minFactor * imageSize.width, height: minFactor * imageSize.height)
+	}
+
+	//Return the image distance from the edge of the screen. Regardless of orientation.
+	func getImageOrigin() -> CGPoint {
+		let imageViewHeight = imageView.bounds.size.height
+		let imageViewWidth = imageView.bounds.size.width
+		let imageSize = getImageSize()
+
+		if imageView.bounds.size.width > imageView.bounds.size.height {
+			return CGPoint(x: ((imageViewWidth - imageSize.width) / 2), y: 0)
+		} else {
+			return CGPoint(x: 0, y: ((imageViewHeight - imageSize.height) / 2))
+		}
 	}
 }
