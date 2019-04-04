@@ -60,6 +60,8 @@ class MemeCollectionViewController: UICollectionViewController, UICollectionView
 	}
 
 	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-		print("\(indexPath.row)")
+		let controller = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
+		controller.memeImage = memes[indexPath.row].memedImage
+		self.navigationController!.pushViewController(controller, animated: true)
 	}
 }
