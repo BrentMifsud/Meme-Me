@@ -61,6 +61,8 @@ class MemeEditorView: UIViewController,	UIImagePickerControllerDelegate,	UINavig
 
 	// MARK:- IBActions
 	@IBAction func actionButtonPressed(_ sender: Any) {
+		// End text editing so that the text cursor does not show up in the meme image.
+		view.endEditing(true)
 		let memeImage = generateMemedImage()
 		let activityController = UIActivityViewController(activityItems: [memeImage], applicationActivities: nil)
 		activityController.completionWithItemsHandler = { (activityType, completed, returnedItems, activityError) in
