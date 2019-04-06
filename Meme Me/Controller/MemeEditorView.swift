@@ -10,7 +10,7 @@ import UIKit
 
 class MemeEditorView: UIViewController,	UIImagePickerControllerDelegate,	UINavigationControllerDelegate {
 
-	//MARK:- IBOutlets
+	// MARK:- IBOutlets
 	@IBOutlet weak var navigationBar: UINavigationItem!
 	@IBOutlet weak var actionButton: UIBarButtonItem!
 	@IBOutlet weak var cancelButton: UIBarButtonItem!
@@ -36,23 +36,22 @@ class MemeEditorView: UIViewController,	UIImagePickerControllerDelegate,	UINavig
 	]
 
 
-	//MARK:- View Controller Methods
+	// MARK:- View Controller Methods
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		initTextField(textField: topTextField, text: "TOP")
 		initTextField(textField: bottomTextField, text: "BOTTOM")
-		actionButton.isEnabled = false
+		resetMemeContentsView()
 	}
 
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
 		subscribeToKeyboardNotifications()
 	}
 
 	override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
 		super.viewWillTransition(to: size, with: coordinator)
-		setMemeContentViewConstraints()
+		updateMemeContentView()
 	}
 
 	override func viewWillDisappear(_ animated: Bool) {
@@ -60,7 +59,7 @@ class MemeEditorView: UIViewController,	UIImagePickerControllerDelegate,	UINavig
 		unsubscribeFromKeyboardNotifications()
 	}
 
-	//MARK:- IBActions
+	// MARK:- IBActions
 	@IBAction func actionButtonPressed(_ sender: Any) {
 		let memeImage = generateMemedImage()
 		let activityController = UIActivityViewController(activityItems: [memeImage], applicationActivities: nil)
@@ -72,13 +71,11 @@ class MemeEditorView: UIViewController,	UIImagePickerControllerDelegate,	UINavig
 		present(activityController, animated: true, completion: nil)
 	}
 
+
 	@IBAction func cancelButtonPressed(_ sender: Any) {
-		actionButton.isEnabled = false
-		imageView.image = nil
-		topTextField.text = "TOP"
-		bottomTextField.text = "BOTTOM"
-		navigationController!.popViewController(animated: true)
+		resetMemeContentsView()
 	}
+
 
 	@IBAction func chooseImage(_ sender: UIBarButtonItem) {
 		let imagePicker = UIImagePickerController()
@@ -96,7 +93,7 @@ class MemeEditorView: UIViewController,	UIImagePickerControllerDelegate,	UINavig
 	}
 
 
-	//MARK:- UIImageView Methods
+	// MARK:- UIImagePickerController Methods
 	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 		var image: UIImage!
 
@@ -108,13 +105,12 @@ class MemeEditorView: UIViewController,	UIImagePickerControllerDelegate,	UINavig
 		}
 
 		imageView.image = image
-		actionButton.isEnabled = true
-		setMemeContentViewConstraints()
-		topTextField.isHidden = false
-		bottomTextField.isHidden = false
+
+		updateMemeContentView()
 
 		dismiss(animated: true, completion: nil)
 	}
+
 
 	func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
 		dismiss(animated: true, completion: nil)

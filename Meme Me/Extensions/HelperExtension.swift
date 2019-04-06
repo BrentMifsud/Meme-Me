@@ -9,14 +9,7 @@
 import UIKit
 
 extension MemeEditorView {
-	func initTextField(textField: UITextField, text: String){
-		textField.delegate = textFieldDelegate
-		textField.defaultTextAttributes = textAttributes
-		textField.text = text
-		textField.textAlignment = .center
-		textField.isHidden = true
-	}
-
+	// Creates and saves the meme image to the data source.
 	func saveMeme() {
 		let meme = Meme(topText: topTextField.text ?? "", bottomText: bottomTextField.text ?? "", originalImage: imageView.image!, memedImage: generateMemedImage())
 
@@ -36,15 +29,7 @@ extension MemeEditorView {
 		}
 	}
 
-	//Sets the Height and Width Constraints of the top and bottom text
-	func setMemeContentViewConstraints() {
-		memeContentViewTopConstraint.constant = getImageOrigin().y
-		memeContentViewBottomConstraint.constant = getImageOrigin().y
-		memeContentViewLeftConstraint.constant = getImageOrigin().x
-		memeContentViewRightConstraint.constant = getImageOrigin().x
-	}
-
-	//Return the CGSize of the image within the imageView
+	// Return the CGSize of the image within the imageView
 	func getImageSize() -> CGSize {
 		let imageViewSize = imageView.bounds.size
 		let imageSize = imageView.image!.size
@@ -57,7 +42,7 @@ extension MemeEditorView {
 		return CGSize(width: minFactor * imageSize.width, height: minFactor * imageSize.height)
 	}
 
-	//Return the image distance from the edge of the screen. Regardless of orientation.
+	// Return the image distance from the edge of the screen. Regardless of orientation or screen size.
 	func getImageOrigin() -> CGPoint {
 		let imageViewHeight = imageView.bounds.size.height
 		let imageViewWidth = imageView.bounds.size.width

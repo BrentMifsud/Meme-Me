@@ -17,6 +17,7 @@
 		840CC205223EB87B00B82C84 /* impact.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 840CC204223EB87B00B82C84 /* impact.ttf */; };
 		84281645224025C8003DB784 /* KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84281644224025C8003DB784 /* KeyboardExtension.swift */; };
 		8428164822402647003DB784 /* HelperExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8428164722402647003DB784 /* HelperExtension.swift */; };
+		84690006225946A9006B06BC /* UIHelperExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84690005225946A9006B06BC /* UIHelperExtension.swift */; };
 		847863852252F78200A2C05E /* MemesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847863842252F78200A2C05E /* MemesTableViewController.swift */; };
 		84786387225303C700A2C05E /* MemeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84786386225303C700A2C05E /* MemeCollectionViewController.swift */; };
 		84786389225307A800A2C05E /* MemeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84786388225307A800A2C05E /* MemeCollectionViewCell.swift */; };
@@ -37,6 +38,7 @@
 		840CC204223EB87B00B82C84 /* impact.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = impact.ttf; sourceTree = "<group>"; };
 		84281644224025C8003DB784 /* KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExtension.swift; sourceTree = "<group>"; };
 		8428164722402647003DB784 /* HelperExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperExtension.swift; sourceTree = "<group>"; };
+		84690005225946A9006B06BC /* UIHelperExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelperExtension.swift; sourceTree = "<group>"; };
 		847863842252F78200A2C05E /* MemesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemesTableViewController.swift; sourceTree = "<group>"; };
 		84786386225303C700A2C05E /* MemeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeCollectionViewController.swift; sourceTree = "<group>"; };
 		84786388225307A800A2C05E /* MemeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			children = (
 				84281644224025C8003DB784 /* KeyboardExtension.swift */,
 				8428164722402647003DB784 /* HelperExtension.swift */,
+				84690005225946A9006B06BC /* UIHelperExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 				840CC1F7223EB74000B82C84 /* Meme_Me.xcdatamodeld in Sources */,
 				84F7F881223EC03E006A2107 /* TextFieldDelegate.swift in Sources */,
 				840CC1EF223EB74000B82C84 /* AppDelegate.swift in Sources */,
+				84690006225946A9006B06BC /* UIHelperExtension.swift in Sources */,
 				84786387225303C700A2C05E /* MemeCollectionViewController.swift in Sources */,
 				84281645224025C8003DB784 /* KeyboardExtension.swift in Sources */,
 				8428164822402647003DB784 /* HelperExtension.swift in Sources */,
