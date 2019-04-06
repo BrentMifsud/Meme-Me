@@ -11,6 +11,7 @@ import UIKit
 class MemeEditorView: UIViewController,	UIImagePickerControllerDelegate,	UINavigationControllerDelegate {
 
 	// MARK:- IBOutlets
+	// MARK: UI Items
 	@IBOutlet weak var navigationBar: UINavigationItem!
 	@IBOutlet weak var actionButton: UIBarButtonItem!
 	@IBOutlet weak var cancelButton: UIBarButtonItem!
@@ -21,6 +22,8 @@ class MemeEditorView: UIViewController,	UIImagePickerControllerDelegate,	UINavig
 	@IBOutlet weak var bottomTextField: UITextField!
 	@IBOutlet weak var imageView: UIImageView!
 	@IBOutlet weak var memeContentView: UIView!
+
+	// MARK: Constraints
 	@IBOutlet weak var memeContentViewTopConstraint: NSLayoutConstraint!
 	@IBOutlet weak var memeContentViewBottomConstraint: NSLayoutConstraint!
 	@IBOutlet weak var memeContentViewLeftConstraint: NSLayoutConstraint!
@@ -64,13 +67,22 @@ class MemeEditorView: UIViewController,	UIImagePickerControllerDelegate,	UINavig
 		// End text editing so that the text cursor does not show up in the meme image.
 		view.endEditing(true)
 		let memeImage = generateMemedImage()
-		let activityController = UIActivityViewController(activityItems: [memeImage], applicationActivities: nil)
-		activityController.completionWithItemsHandler = { (activityType, completed, returnedItems, activityError) in
+
+		let activityVC = UIActivityViewController(activityItems: [memeImage], applicationActivities: nil)
+
+		present(activityVC, animated: true, completion: nil)
+
+		// support iPad popover activity view controller.
+		if let popOver = activityVC.popoverPresentationController {
+			popOver.sourceView = self.view
+			popOver.barButtonItem = actionButton
+		}
+
+		activityVC.completionWithItemsHandler = { (activityType, completed, returnedItems, activityError) in
 			if completed {
 				self.saveMeme()
 			}
 		}
-		present(activityController, animated: true, completion: nil)
 	}
 
 

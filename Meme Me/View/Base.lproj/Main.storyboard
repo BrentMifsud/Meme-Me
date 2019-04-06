@@ -46,10 +46,10 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="3C2-Yz-eMM" secondAttribute="bottom" id="1sW-3h-VXf"/>
-                                    <constraint firstAttribute="trailing" secondItem="dvA-if-MLh" secondAttribute="trailing" id="2EB-tj-lEZ"/>
+                                    <constraint firstItem="dvA-if-MLh" firstAttribute="trailing" secondItem="ST5-z0-oxa" secondAttribute="trailing" id="2EB-tj-lEZ"/>
                                     <constraint firstItem="3C2-Yz-eMM" firstAttribute="centerX" secondItem="ST5-z0-oxa" secondAttribute="centerX" id="3yP-qs-loW"/>
                                     <constraint firstAttribute="trailing" secondItem="3C2-Yz-eMM" secondAttribute="trailing" id="AzJ-jE-zNT"/>
-                                    <constraint firstAttribute="trailing" secondItem="VGx-ez-ovu" secondAttribute="trailing" id="PJR-G5-pyo"/>
+                                    <constraint firstItem="VGx-ez-ovu" firstAttribute="trailing" secondItem="ST5-z0-oxa" secondAttribute="trailing" id="PJR-G5-pyo"/>
                                     <constraint firstItem="3C2-Yz-eMM" firstAttribute="centerY" secondItem="ST5-z0-oxa" secondAttribute="centerY" id="SkT-Nh-xSH"/>
                                     <constraint firstItem="dvA-if-MLh" firstAttribute="top" secondItem="ST5-z0-oxa" secondAttribute="top" constant="8" id="WV5-yg-Dqe"/>
                                     <constraint firstAttribute="bottom" secondItem="VGx-ez-ovu" secondAttribute="bottom" constant="8" id="f9z-1b-fgY"/>
@@ -61,9 +61,6 @@
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="jo5-cl-ard">
                                 <rect key="frame" x="0.0" y="769" width="414" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="2r3-Kn-HYw"/>
-                                </constraints>
                                 <items>
                                     <barButtonItem systemItem="action" id="N7J-GY-QcI">
                                         <connections>
@@ -92,7 +89,7 @@
                             <constraint firstItem="jo5-cl-ard" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ZOO-3p-9wQ"/>
                             <constraint firstItem="jo5-cl-ard" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="erX-K3-C6N"/>
                             <constraint firstItem="ST5-z0-oxa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="kcw-Nu-pz0"/>
-                            <constraint firstItem="ST5-z0-oxa" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="weK-WV-KwU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ST5-z0-oxa" secondAttribute="trailing" id="weK-WV-KwU"/>
                             <constraint firstItem="jo5-cl-ard" firstAttribute="top" secondItem="ST5-z0-oxa" secondAttribute="bottom" id="xiZ-Hr-VWl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

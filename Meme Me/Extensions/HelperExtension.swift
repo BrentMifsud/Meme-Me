@@ -44,14 +44,10 @@ extension MemeEditorView {
 
 	// Return the image distance from the edge of the screen. Regardless of orientation or screen size.
 	func getImageOrigin() -> CGPoint {
-		let imageViewHeight = imageView.bounds.size.height
-		let imageViewWidth = imageView.bounds.size.width
 		let imageSize = getImageSize()
+		let imageXOrigin = ((imageView.bounds.size.width - imageSize.width) / 2)
+		let imageYOrigin = ((imageView.bounds.size.height - imageSize.height) / 2)
 
-		if imageView.bounds.size.width > imageView.bounds.size.height {
-			return CGPoint(x: ((imageViewWidth - imageSize.width) / 2), y: 0)
-		} else {
-			return CGPoint(x: 0, y: ((imageViewHeight - imageSize.height) / 2))
-		}
+		return CGPoint(x: imageXOrigin, y: imageYOrigin)
 	}
 }
