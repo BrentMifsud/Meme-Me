@@ -25,7 +25,7 @@ extension MemeEditorView {
 		// As of iOS 10, UIGraphicsImageRenderer is the new way to make images.
 		// This creates an image cropping out the extra area from the UIImageView
 		return UIGraphicsImageRenderer(bounds: drawArea).image { (context) in
-			memeContentView.drawHierarchy(in: drawArea, afterScreenUpdates: true)
+			memeView.drawHierarchy(in: drawArea, afterScreenUpdates: true)
 		}
 	}
 

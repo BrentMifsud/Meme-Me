@@ -16,37 +16,50 @@ extension MemeEditorView {
 		textField.defaultTextAttributes = textAttributes
 		textField.text = text
 		textField.textAlignment = .center
-		textField.isHidden = true
 	}
 
 	// Return the memeContentView to its original state
-	func resetMemeContentsView() {
+	func resetMemeContentView() {
+		memeView.isHidden = true
+		actionButton.isEnabled = false
+		cancelButton.isEnabled = false
+		cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
 		imageView.image = nil
 		topTextField.text = "TOP"
 		bottomTextField.text = "BOTTOM"
-		topTextField.isHidden = true
-		bottomTextField.isHidden = true
-		memeContentViewTopConstraint.constant = 0
-		memeContentViewBottomConstraint.constant = 0
-		memeContentViewLeftConstraint.constant = 0
-		memeContentViewRightConstraint.constant = 0
-		actionButton.isEnabled = false
-		cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
-		galleryButton.isEnabled = true
-		cancelButton.isEnabled = false
 	}
 
-	// Sets the Height and Width Constraints of the top and bottom text
-	func updateMemeContentView() {
+	func updateMemeView(_ imageRect: CGRect) {
+		// Set the constriants of the memeContentView
+		memeViewTop.constant = imageRect.origin.y
+		memeViewBottom.constant = imageRect.origin.y
+		memeViewLeft.constant = imageRect.origin.x
+		memeViewRight.constant = imageRect.origin.x
+
+		// Unhide the memeView and enable sharing and cancel buttons
+		memeView.isHidden = false
 		actionButton.isEnabled = true
 		cancelButton.isEnabled = true
-		cameraButton.isEnabled = false
-		galleryButton.isEnabled = false
-		topTextField.isHidden = false
-		bottomTextField.isHidden = false
-		memeContentViewTopConstraint.constant = getImageOrigin().y
-		memeContentViewBottomConstraint.constant = getImageOrigin().y
-		memeContentViewLeftConstraint.constant = getImageOrigin().x
-		memeContentViewRightConstraint.constant = getImageOrigin().x
+	}
+
+	func getScaledImageRect(viewFrame: CGRect, image: UIImage) -> CGRect {
+		// Calculate the CGRect for the scaled image.
+		let viewWidth = viewFrame.size.width
+		let viewHeight = viewFrame.size.height
+		let minSide = min(viewHeight, viewWidth)
+
+		let scale: CGFloat
+
+		if image.size.width == image.size.height {
+			scale = minSide / image.size.width
+		} else if image.size.width > image.size.height {
+			scale = viewWidth / image.size.width
+		} else {
+			scale = viewHeight / image.size.height
+		}
+
+		let size = CGSize(width: image.size.width * scale, height: image.size.height * scale)
+		let origin = CGPoint(x: (viewWidth - size.width) / 2, y: (viewHeight - size.height) / 2)
+		return CGRect(origin: origin, size: size)
 	}
 }

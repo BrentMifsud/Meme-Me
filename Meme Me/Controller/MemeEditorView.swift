@@ -11,23 +11,27 @@ import UIKit
 class MemeEditorView: UIViewController,	UIImagePickerControllerDelegate,	UINavigationControllerDelegate {
 
 	// MARK:- IBOutlets
-	// MARK: UI Items
+	// MARK: Main View Items
 	@IBOutlet weak var navigationBar: UINavigationItem!
-	@IBOutlet weak var actionButton: UIBarButtonItem!
 	@IBOutlet weak var cancelButton: UIBarButtonItem!
 	@IBOutlet weak var toolbar: UIToolbar!
+	@IBOutlet weak var actionButton: UIBarButtonItem!
 	@IBOutlet weak var cameraButton: UIBarButtonItem!
 	@IBOutlet weak var galleryButton: UIBarButtonItem!
+
+	// MARK: Meme Editor Items
+	@IBOutlet weak var memeEditorView: UIView!
+	@IBOutlet weak var memeView: UIView!
 	@IBOutlet weak var topTextField: UITextField!
 	@IBOutlet weak var bottomTextField: UITextField!
 	@IBOutlet weak var imageView: UIImageView!
-	@IBOutlet weak var memeContentView: UIView!
 
-	// MARK: Constraints
-	@IBOutlet weak var memeContentViewTopConstraint: NSLayoutConstraint!
-	@IBOutlet weak var memeContentViewBottomConstraint: NSLayoutConstraint!
-	@IBOutlet weak var memeContentViewLeftConstraint: NSLayoutConstraint!
-	@IBOutlet weak var memeContentViewRightConstraint: NSLayoutConstraint!
+	//Constraints
+	@IBOutlet weak var memeViewTop: NSLayoutConstraint!
+	@IBOutlet weak var memeViewBottom: NSLayoutConstraint!
+	@IBOutlet weak var memeViewLeft: NSLayoutConstraint!
+	@IBOutlet weak var memeViewRight: NSLayoutConstraint!
+
 
 	let textFieldDelegate = TextFieldDelegate()
 
@@ -44,7 +48,7 @@ class MemeEditorView: UIViewController,	UIImagePickerControllerDelegate,	UINavig
 		super.viewDidLoad()
 		initTextField(textField: topTextField, text: "TOP")
 		initTextField(textField: bottomTextField, text: "BOTTOM")
-		resetMemeContentsView()
+		resetMemeContentView()
 	}
 
 	override func viewWillAppear(_ animated: Bool) {
@@ -54,7 +58,6 @@ class MemeEditorView: UIViewController,	UIImagePickerControllerDelegate,	UINavig
 
 	override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
 		super.viewWillTransition(to: size, with: coordinator)
-		updateMemeContentView()
 	}
 
 	override func viewWillDisappear(_ animated: Bool) {
@@ -87,7 +90,7 @@ class MemeEditorView: UIViewController,	UIImagePickerControllerDelegate,	UINavig
 
 
 	@IBAction func cancelButtonPressed(_ sender: Any) {
-		resetMemeContentsView()
+		resetMemeContentView()
 	}
 
 
@@ -109,6 +112,7 @@ class MemeEditorView: UIViewController,	UIImagePickerControllerDelegate,	UINavig
 
 	// MARK:- UIImagePickerController Methods
 	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+
 		var image: UIImage!
 
 		//Handle is image was cropped or not
@@ -120,7 +124,7 @@ class MemeEditorView: UIViewController,	UIImagePickerControllerDelegate,	UINavig
 
 		imageView.image = image
 
-		updateMemeContentView()
+		updateMemeView(getScaledImageRect(viewFrame: memeEditorView.frame, image: image))
 
 		dismiss(animated: true, completion: nil)
 	}
