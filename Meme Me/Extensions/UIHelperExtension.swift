@@ -27,6 +27,10 @@ extension MemeEditorView {
 		imageView.image = nil
 		topTextField.text = "TOP"
 		bottomTextField.text = "BOTTOM"
+		memeViewTop.constant = 0
+		memeViewBottom.constant = 0
+		memeViewLeft.constant = 0
+		memeViewRight.constant = 0
 	}
 
 	func updateMemeView(_ imageRect: CGRect) {
@@ -46,19 +50,15 @@ extension MemeEditorView {
 		// Calculate the CGRect for the scaled image.
 		let viewWidth = viewFrame.size.width
 		let viewHeight = viewFrame.size.height
-		let minSide = min(viewHeight, viewWidth)
+		let imageWidth = image.size.width
+		let imageHeight = image.size.height
 
-		let scale: CGFloat
-
-		if image.size.width == image.size.height {
-			scale = minSide / image.size.width
-		} else if image.size.width > image.size.height {
-			scale = viewWidth / image.size.width
-		} else {
-			scale = viewHeight / image.size.height
+		var scale = viewWidth / imageWidth
+		if (viewHeight / imageHeight < scale) {
+			scale = viewHeight / imageHeight
 		}
 
-		let size = CGSize(width: image.size.width * scale, height: image.size.height * scale)
+		let size = CGSize(width: imageWidth * scale, height: imageHeight * scale)
 		let origin = CGPoint(x: (viewWidth - size.width) / 2, y: (viewHeight - size.height) / 2)
 		return CGRect(origin: origin, size: size)
 	}

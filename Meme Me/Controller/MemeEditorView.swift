@@ -14,7 +14,7 @@ class MemeEditorView: UIViewController,	UIImagePickerControllerDelegate,	UINavig
 	// MARK: Main View Items
 	@IBOutlet weak var navigationBar: UINavigationItem!
 	@IBOutlet weak var cancelButton: UIBarButtonItem!
-	@IBOutlet weak var toolbar: UIToolbar!
+	@IBOutlet weak var toolBar: UIToolbar!
 	@IBOutlet weak var actionButton: UIBarButtonItem!
 	@IBOutlet weak var cameraButton: UIBarButtonItem!
 	@IBOutlet weak var galleryButton: UIBarButtonItem!
@@ -58,6 +58,19 @@ class MemeEditorView: UIViewController,	UIImagePickerControllerDelegate,	UINavig
 
 	override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
 		super.viewWillTransition(to: size, with: coordinator)
+
+		guard let image = imageView.image else { return }
+
+		coordinator.animate(alongsideTransition: { (_) in
+			let w = self.memeEditorView.frame.width
+			let h = self.memeEditorView.frame.height
+
+			let newRect = CGRect(x: 0, y: 0, width: w, height: h)
+
+			let newImageRect = self.getScaledImageRect(viewFrame: newRect, image: image)
+
+			self.updateMemeView(newImageRect)
+		}, completion: nil)
 	}
 
 	override func viewWillDisappear(_ animated: Bool) {

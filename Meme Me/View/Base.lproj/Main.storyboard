@@ -26,10 +26,10 @@
                             <view contentMode="scaleToFill" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="vei-oU-Uff" userLabel="Meme Editor View">
                                 <rect key="frame" x="0.0" y="64" width="320" height="411"/>
                                 <subviews>
-                                    <view hidden="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="200" placeholderIntrinsicHeight="200" translatesAutoresizingMaskIntoConstraints="NO" id="ST5-z0-oxa" userLabel="Meme View">
+                                    <view hidden="YES" contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="ST5-z0-oxa" userLabel="Meme View">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3C2-Yz-eMM">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3C2-Yz-eMM">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </imageView>
@@ -99,8 +99,8 @@
                             <constraint firstItem="jo5-cl-ard" firstAttribute="top" secondItem="vei-oU-Uff" secondAttribute="bottom" id="MbC-xu-Hd7"/>
                             <constraint firstItem="vei-oU-Uff" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="WPR-FH-U8U"/>
                             <constraint firstItem="vei-oU-Uff" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Xjg-vn-PPx"/>
-                            <constraint firstItem="jo5-cl-ard" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ZOO-3p-9wQ"/>
-                            <constraint firstItem="jo5-cl-ard" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="erX-K3-C6N"/>
+                            <constraint firstItem="jo5-cl-ard" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ZOO-3p-9wQ"/>
+                            <constraint firstItem="jo5-cl-ard" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="erX-K3-C6N"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -125,7 +125,7 @@
                         <outlet property="memeViewRight" destination="20T-Oo-BO6" id="wQA-Ie-OHo"/>
                         <outlet property="memeViewTop" destination="Mco-lI-awc" id="zfU-PG-4Ed"/>
                         <outlet property="navigationBar" destination="0G9-f7-k3Y" id="pzO-ug-a5N"/>
-                        <outlet property="toolbar" destination="jo5-cl-ard" id="akD-de-LXc"/>
+                        <outlet property="toolBar" destination="jo5-cl-ard" id="akD-de-LXc"/>
                         <outlet property="topTextField" destination="dvA-if-MLh" id="eh5-hz-0Ua"/>
                     </connections>
                 </viewController>
@@ -262,42 +262,16 @@
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PwI-Ns-hox">
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top Text" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IUM-k8-Ies">
-                                            <rect key="frame" x="0.0" y="0.0" width="100" height="21"/>
-                                            <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="17"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bottom Text" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Yp-ig-SeJ">
-                                            <rect key="frame" x="0.0" y="79" width="100" height="21"/>
-                                            <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="17"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="IUM-k8-Ies" firstAttribute="leading" secondItem="P1i-bq-OSq" secondAttribute="leading" id="2Fh-mh-qw9"/>
                                     <constraint firstItem="PwI-Ns-hox" firstAttribute="leading" secondItem="P1i-bq-OSq" secondAttribute="leading" id="2sa-gL-2VM"/>
-                                    <constraint firstAttribute="trailing" secondItem="IUM-k8-Ies" secondAttribute="trailing" id="ABz-u9-KY1"/>
                                     <constraint firstAttribute="trailing" secondItem="PwI-Ns-hox" secondAttribute="trailing" id="DIv-Ac-Bq3"/>
-                                    <constraint firstItem="1Yp-ig-SeJ" firstAttribute="leading" secondItem="P1i-bq-OSq" secondAttribute="leading" id="IB9-Jl-sw0"/>
-                                    <constraint firstAttribute="bottom" secondItem="1Yp-ig-SeJ" secondAttribute="bottom" id="M8t-XR-aEE"/>
                                     <constraint firstAttribute="bottom" secondItem="PwI-Ns-hox" secondAttribute="bottom" id="No0-fe-H5e"/>
-                                    <constraint firstItem="IUM-k8-Ies" firstAttribute="top" secondItem="P1i-bq-OSq" secondAttribute="top" id="QmC-81-UGo"/>
-                                    <constraint firstAttribute="trailing" secondItem="IUM-k8-Ies" secondAttribute="trailing" id="UWO-13-o2S"/>
-                                    <constraint firstAttribute="trailing" secondItem="1Yp-ig-SeJ" secondAttribute="trailing" id="Xdi-ew-vb0"/>
                                     <constraint firstItem="PwI-Ns-hox" firstAttribute="top" secondItem="P1i-bq-OSq" secondAttribute="top" id="Xvk-qR-dtx"/>
-                                    <constraint firstItem="1Yp-ig-SeJ" firstAttribute="leading" secondItem="P1i-bq-OSq" secondAttribute="leading" id="h8v-GA-WTh"/>
-                                    <constraint firstItem="IUM-k8-Ies" firstAttribute="top" secondItem="P1i-bq-OSq" secondAttribute="top" id="oSz-dY-Yaz"/>
-                                    <constraint firstAttribute="trailing" secondItem="1Yp-ig-SeJ" secondAttribute="trailing" id="r6o-KR-lHe"/>
-                                    <constraint firstAttribute="bottom" secondItem="1Yp-ig-SeJ" secondAttribute="bottom" id="s7D-fO-mhq"/>
-                                    <constraint firstItem="IUM-k8-Ies" firstAttribute="leading" secondItem="P1i-bq-OSq" secondAttribute="leading" id="wZ6-A1-j50"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="cellBottomText" destination="1Yp-ig-SeJ" id="f7K-AG-O92"/>
                                     <outlet property="cellImageView" destination="PwI-Ns-hox" id="lYm-XB-8JC"/>
-                                    <outlet property="cellTopText" destination="IUM-k8-Ies" id="Cq2-qg-uGe"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -346,6 +320,6 @@
         <image name="table_30x30" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9J9-Xe-fKv"/>
+        <segue reference="35X-hD-l0x"/>
     </inferredMetricsTieBreakers>
 </document>
