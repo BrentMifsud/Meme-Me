@@ -45,6 +45,12 @@ class MemeCollectionViewController: UICollectionViewController, UICollectionView
 
 	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
+		if memes.count == 0 {
+			setEmptyView()
+		} else {
+			restoreCollectionView()
+		}
+
 		return memes.count
 	}
 

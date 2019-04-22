@@ -24,6 +24,12 @@ class MemeTableViewController: UITableViewController {
 
 		let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
+		if memes.count == 0 {
+			setEmptyView()
+		} else {
+			restoreTableView()
+		}
+
 		return appDelegate.memes.count
 	}
 
