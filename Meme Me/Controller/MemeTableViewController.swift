@@ -15,15 +15,20 @@ class MemeTableViewController: UITableViewController {
 		return appDelegate.memes
 	}
 
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(true)
 		tableView.reloadData()
 	}
 
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
 		let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
+		if memes.count == 0 {
+			setEmptyView()
+		} else {
+			restoreTableView()
+		}
 
 		return appDelegate.memes.count
 	}

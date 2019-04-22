@@ -18,9 +18,8 @@ class MemeCollectionViewController: UICollectionViewController, UICollectionView
 		return appDelegate.memes
 	}
 
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
 		collectionView.reloadData()
 	}
 
@@ -45,6 +44,12 @@ class MemeCollectionViewController: UICollectionViewController, UICollectionView
 	}
 
 	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+
+		if memes.count == 0 {
+			setEmptyView()
+		} else {
+			restoreCollectionView()
+		}
 
 		return memes.count
 	}
